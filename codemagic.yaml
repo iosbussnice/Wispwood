@@ -1,4 +1,18 @@
-scripts:
+workflows:
+  ios-build-workflow:
+    name: iOS Build Workflow
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - global
+    scripts:
+      - name: Install dependencies
+        script: |
+          bundle install
+      - name: Build iOS App
+        script: |
+          bundle exec fastlane ios build_onlyscripts:
       - name: Build iOS App
         script: |
           bundle install
