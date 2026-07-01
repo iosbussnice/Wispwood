@@ -1,19 +1,9 @@
 workflows:
   ios-build-workflow:
-    name: iOS Build Workflow
-    max_build_duration: 60
+    name: iOS Build
+    max_build_duration: 20
     instance_type: mac_mini_m1
-    environment:
-      groups:
-        - global
     scripts:
-      - name: Install dependencies
+      - name: Build with Xcode
         script: |
-          bundle install
-      - name: Build iOS App
-        script: |
-          bundle exec fastlane ios build_onlyscripts:
-      - name: Build iOS App
-        script: |
-          bundle install
-          bundle exec fastlane ios build_only
+          xcodebuild -workspace "Wispwood.xcworkspace" -scheme "Wispwood" -sdk iphoneos archive -archivePath $PWD/build/Wispwood.xcarchive
