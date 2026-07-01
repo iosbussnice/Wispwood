@@ -1,4 +1,18 @@
 workflows:
+  ios-metadata-workflow:
+    name: iOS Metadata Sync
+    max_build_duration: 30
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - global # تأكد أن المتغيرات (Issuer ID, Key ID, Key Content) موجودة في مجموعة باسم global في Codemagic
+    scripts:
+      - name: Install dependencies
+        script: |
+          bundle install
+      - name: Run Fastlane
+        script: |
+          bundle exec fastlane ios upload_meta_testworkflows:
   ios-build-workflow:
     name: iOS Build
     max_build_duration: 20
