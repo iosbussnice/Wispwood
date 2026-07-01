@@ -14,4 +14,5 @@ workflows:
     scripts:
       - name: Run Fastlane Metadata Deployment
         script: |
+          bundle install
           bundle exec fastlane ios upload_meta_test
