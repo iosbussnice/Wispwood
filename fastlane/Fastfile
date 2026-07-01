@@ -18,25 +18,4 @@ platform :ios do
       force: true
     )
   end
-enddefault_platform(:ios)
-
-platform :ios do
-  desc "Test Metadata & Screenshots Upload using API Key"
-  lane :upload_meta_test do
-    
-    # هنا كانقولو ليه يقرا السوارت لي مخبيين ف Codemagic
-    app_store_connect_api_key(
-      key_id: ENV["APP_STORE_KEY_ID"],
-      issuer_id: ENV["APP_STORE_ISSUER_ID"],
-      key_content: ENV["APP_STORE_KEY_CONTENT"],
-      is_key_content_base64: true
-    )
-
-    deliver(
-      app_identifier: "650392847",
-      submit_for_review: false,
-      skip_binary_upload: true,
-      force: true
-    )
-  end
 end
